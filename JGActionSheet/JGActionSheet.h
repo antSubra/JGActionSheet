@@ -16,9 +16,7 @@
 typedef NS_ENUM(NSUInteger, JGActionSheetButtonStyle) {
   JGActionSheetButtonStyleDefault,
   JGActionSheetButtonStyleCancel,
-  JGActionSheetButtonStyleRed,
-  JGActionSheetButtonStyleGreen,
-  JGActionSheetButtonStyleBlue
+  JGActionSheetButtonStyleSelected
 };
 
 /**
@@ -31,12 +29,6 @@ typedef NS_ENUM(NSUInteger, JGActionSheetArrowDirection) {
   JGActionSheetArrowDirectionTop,
   JGActionSheetArrowDirectionBottom,
 };
-
-
-
-
-
-
 
 /**
  A section for JGActionSheet.
