@@ -14,11 +14,11 @@
  @sa JGActionSheetSection.
  */
 typedef NS_ENUM(NSUInteger, JGActionSheetButtonStyle) {
-    JGActionSheetButtonStyleDefault,
-    JGActionSheetButtonStyleCancel,
-    JGActionSheetButtonStyleRed,
-    JGActionSheetButtonStyleGreen,
-    JGActionSheetButtonStyleBlue
+  JGActionSheetButtonStyleDefault,
+  JGActionSheetButtonStyleCancel,
+  JGActionSheetButtonStyleRed,
+  JGActionSheetButtonStyleGreen,
+  JGActionSheetButtonStyleBlue
 };
 
 /**
@@ -26,10 +26,10 @@ typedef NS_ENUM(NSUInteger, JGActionSheetButtonStyle) {
  @sa JGActionSheetSection.
  */
 typedef NS_ENUM(NSUInteger, JGActionSheetArrowDirection) {
-    JGActionSheetArrowDirectionLeft,
-    JGActionSheetArrowDirectionRight,
-    JGActionSheetArrowDirectionTop,
-    JGActionSheetArrowDirectionBottom,
+  JGActionSheetArrowDirectionLeft,
+  JGActionSheetArrowDirectionRight,
+  JGActionSheetArrowDirectionTop,
+  JGActionSheetArrowDirectionBottom,
 };
 
 
@@ -65,11 +65,20 @@ typedef NS_ENUM(NSUInteger, JGActionSheetArrowDirection) {
  */
 @property (nonatomic, strong, readonly) UIView *contentView;
 
+/**
+ The image check containing the image show when cell is selected.
+ */
+@property (nonatomic, strong) UIImage *image;
 
 /**
- Returns a standard cancel section. The button title is "Cancel" (localized string), and the button style is the cancel button style.
-*/
-+ (instancetype)cancelSection;
+ The selectedIndex containing index of selected element.
+ */
+@property (nonatomic, strong) NSNumber *selectedIndex;
+
+/**
+ The selectedColor contain color of selected element.
+ */
+@property (nonatomic, strong) UIColor *selectedColor;
 
 /**
  Convenience initializer for the @c initWithTitle:message:buttonTitles:buttonStyle: initializer.
@@ -84,6 +93,17 @@ typedef NS_ENUM(NSUInteger, JGActionSheetArrowDirection) {
  @param buttonStyle The style to apply to the buttons. This can be altered later with the @c setButtonStyle:forButtonAtIndex: method
  */
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message buttonTitles:(NSArray *)buttonTitles buttonStyle:(JGActionSheetButtonStyle)buttonStyle;
+/**
+ Initializes the section with buttons.
+ @param title The title of the section. (Optional)
+ @param message The message of the section. (Optional)
+ @param buttonTitles The titles for the buttons in the section.
+ @param buttonStyle The style to apply to the buttons. This can be altered later with the @c setButtonStyle:forButtonAtIndex: method
+ @param checkImage Image for checked element
+ @param selectedIndex index of selected element
+ @param selectedColor background color of selected row
+ */
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message buttonTitles:(NSArray *)buttonTitles buttonStyle:(JGActionSheetButtonStyle)buttonStyle checkImage:(UIImage *)checkImage selectedIndex:(NSNumber *)selectedIndex selectedColor:(UIColor *)color;
 
 /**
  Convenience initializer for the @c initWithTitle:message:contentView: method.
@@ -146,7 +166,7 @@ typedef NS_ENUM(NSUInteger, JGActionSheetArrowDirection) {
  Called when a button in any section of the action sheet is pressed. (Optional)
  @param indexPath The index path of the pressed button. (Section, Row)
  
-  @Note Unlike UIActionSheet, JGActionSheet does not automatically dismiss when a button is pressed. You need to manually call @c dismissAnimated: to dismiss the action sheet.
+ @Note Unlike UIActionSheet, JGActionSheet does not automatically dismiss when a button is pressed. You need to manually call @c dismissAnimated: to dismiss the action sheet.
  */
 - (void)actionSheet:(JGActionSheet *)actionSheet pressedButtonAtIndexPath:(NSIndexPath *)indexPath;
 
